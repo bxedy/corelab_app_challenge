@@ -1,3 +1,4 @@
+import 'package:corelab_app_challenge/core/ui/components/app_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -13,9 +14,10 @@ class _HomePageState extends State<HomePage> {
   final IHomeController controller = Modular.get();
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-    child: Scaffold(
-      body: Center(),
-    ),
-  );
+  Widget build(BuildContext context) => Scaffold(
+        bottomNavigationBar: AppBottomNavigation(
+          currentPage: AvailablePages.home,
+        ),
+        body: Center(),
+      );
 }
