@@ -1,7 +1,7 @@
-import 'package:corelab_app_challenge/core/ui/components/app_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../core/ui/components/app_bottom_navigation_bar.dart';
 import '../controller/categories_controller.dart';
 
 class CategoriesPage extends StatefulWidget {

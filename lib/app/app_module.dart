@@ -1,6 +1,6 @@
-import 'package:corelab_app_challenge/modules/categories/categories_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../modules/categories/categories_module.dart';
 import '../modules/home/home_module.dart';
 
 const appTransition = TransitionType.fadeIn;

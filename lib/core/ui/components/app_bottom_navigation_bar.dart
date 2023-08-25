@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:corelab_app_challenge/core/ui/components/height.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:localization/localization.dart';
@@ -8,13 +7,14 @@ import 'package:localization/localization.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/ui/components/app_snack_bar.dart';
 import '../theme/app_icons.dart';
+import 'height.dart';
 
 enum AvailablePages {
   home,
   categories,
   announce,
   favorites,
-  profile,
+  account,
 }
 
 class AppBottomNavigation extends StatefulWidget {
@@ -27,7 +27,6 @@ class AppBottomNavigation extends StatefulWidget {
 }
 
 class _AppBottomNavigationState extends State<AppBottomNavigation> {
-  
   onCategoriesTap() {
     Modular.to.pushNamed(AppRoutes.categories);
   }
@@ -72,8 +71,8 @@ class _AppBottomNavigationState extends State<AppBottomNavigation> {
             ),
             _buttonNavigation(
               icon: AppIcons.user,
-              label: 'profile'.i18n(),
-              isSelected: widget.currentPage == AvailablePages.profile,
+              label: 'account'.i18n(),
+              isSelected: widget.currentPage == AvailablePages.account,
               onTap: onUnavaiableFeatureTap,
             ),
           ],
@@ -98,9 +97,8 @@ class _AppBottomNavigationState extends State<AppBottomNavigation> {
             icon.icon(color: isSelected ? Colors.blue : Colors.grey, width: 32, height: 32),
             Text(
               label,
-              style: const TextStyle(
-                fontSize: 12,
-              ),
+              style: TextStyle(
+                  fontSize: 12, fontWeight: FontWeight.w400, color: isSelected ? Colors.blue : Colors.grey),
             ),
           ],
         ),
