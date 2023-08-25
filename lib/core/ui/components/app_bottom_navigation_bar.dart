@@ -1,13 +1,14 @@
 import 'dart:io';
 
+import 'height.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:localization/localization.dart';
 
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/ui/components/app_snack_bar.dart';
+import '../theme/app_colors.dart';
 import '../theme/app_icons.dart';
-import 'height.dart';
 
 enum AvailablePages {
   home,
@@ -92,14 +93,28 @@ class _AppBottomNavigationState extends State<AppBottomNavigation> {
         borderRadius: BorderRadius.circular(50),
         onTap: onTap,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Height(12),
-            icon.icon(color: isSelected ? Colors.blue : Colors.grey, width: 32, height: 32),
-            Text(
-              label,
-              style: TextStyle(
-                  fontSize: 12, fontWeight: FontWeight.w400, color: isSelected ? Colors.blue : Colors.grey),
+            const Spacer(),
+            Column(
+              children: [
+                icon.icon(
+                  color: isSelected ? AppColors.defaultCyan : Colors.grey,
+                  width: 32,
+                  height: 32,
+                ),
+                const Height(4),
+                Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: isSelected ? AppColors.defaultCyan : Colors.grey,
+                  ),
+                ),
+              ],
             ),
+            const Spacer(),
           ],
         ),
       ),
