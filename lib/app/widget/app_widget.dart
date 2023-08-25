@@ -4,8 +4,6 @@ import 'package:localization/localization.dart';
 
 import '../../core/i18n/i18n.dart';
 
-
-
 class AppGlobalKeys {
   static final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
   static final globalKey = GlobalKey();
@@ -21,10 +19,8 @@ class AppWidget extends StatelessWidget {
     LocalJsonLocalization.delegate.directories = I18nConfigs.directories;
 
     return MaterialApp.router(
-      // locale: const Locale('en', 'US'),
       supportedLocales: const [Locale('pt', 'BR')],
       localizationsDelegates: [
-
         LocalJsonLocalization.delegate,
       ],
       routeInformationParser: Modular.routeInformationParser,
