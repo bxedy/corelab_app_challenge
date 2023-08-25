@@ -1,17 +1,19 @@
 name: corelab_app_challenge
 description: A new Flutter project.
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: ">=3.1.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_modular: ^5.0.3
   localization: ^2.1.0
-
+  flutter_svg: ^2.0.7
+  flutter_localization: ^0.1.13
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -19,3 +21,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    #i18n
+    - lib/core/i18n/common/
+    #assets
+    - assets/icons/
