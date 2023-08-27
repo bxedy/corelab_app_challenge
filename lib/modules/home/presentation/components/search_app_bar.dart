@@ -1,5 +1,5 @@
-import 'package:corelab_app_challenge/core/ui/theme/app_colors.dart';
-import 'package:corelab_app_challenge/core/ui/theme/app_text_styles.dart';
+import '../../../../core/ui/theme/app_colors.dart';
+import '../../../../core/ui/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
