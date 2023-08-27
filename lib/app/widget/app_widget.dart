@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:localization/localization.dart';
 
@@ -18,15 +19,24 @@ class AppWidget extends StatelessWidget {
     Modular.setNavigatorKey(AppGlobalKeys.navigatorKey);
     LocalJsonLocalization.delegate.directories = I18nConfigs.directories;
 
-    return MaterialApp.router(
-      supportedLocales: const [Locale('pt', 'BR')],
-      localizationsDelegates: [
-        LocalJsonLocalization.delegate,
-      ],
-      routeInformationParser: Modular.routeInformationParser,
-      routerDelegate: Modular.routerDelegate,
-      scaffoldMessengerKey: AppGlobalKeys.scaffoldMessengerKey,
-      key: AppGlobalKeys.globalKey,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        supportedLocales: const [Locale('pt', 'BR')],
+        localizationsDelegates: [
+          LocalJsonLocalization.delegate,
+        ],
+        routeInformationParser: Modular.routeInformationParser,
+        routerDelegate: Modular.routerDelegate,
+        scaffoldMessengerKey: AppGlobalKeys.scaffoldMessengerKey,
+        key: AppGlobalKeys.globalKey,
+      ),
     );
   }
 }

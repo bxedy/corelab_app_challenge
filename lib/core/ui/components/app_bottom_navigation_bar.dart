@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'height.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:localization/localization.dart';
@@ -9,6 +8,7 @@ import '../../../../core/routes/app_routes.dart';
 import '../../../../core/ui/components/app_snack_bar.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_icons.dart';
+import 'height.dart';
 
 enum AvailablePages {
   home,
