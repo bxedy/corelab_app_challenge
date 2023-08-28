@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/domain/debouncer.dart';
 import '../../../../core/domain/enums/pagestate_enum.dart';
 import '../../../shared/domain/entities/product_entity.dart';
 import '../../domain/usecases/fetch_history_usecase.dart';
@@ -21,6 +22,7 @@ class SearchControlller {
   final List<String> searchHistory = [];
   final ValueNotifier<PageState> pageState = ValueNotifier(PageState.initial);
   final TextEditingController searchTextEditingController = TextEditingController();
+  final Debouncer _searchDebouncer = Debouncer(const Duration(seconds: 1)); // Defina o atraso de 2 segundos
 
   Future<void> fetchHistory() async {
     pageState.value = PageState.loading;
@@ -41,7 +43,7 @@ class SearchControlller {
   }
 
   void undoSearch() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 4));
 
     searchResults = [];
     await fetchHistory();
@@ -51,19 +53,22 @@ class SearchControlller {
   Future<void> search(String search) async {
     pageState.value = PageState.loading;
 
-    saveToHistory(search);
+    _searchDebouncer.cancel();
+    _searchDebouncer.run(() async {
+      saveToHistory(search);
 
-    final response = await _searchUsecase(search);
+      final response = await _searchUsecase(search);
 
-    response.fold(
-      (failure) {
-        pageState.value = PageState.error;
-      },
-      (response) {
-        pageState.value = PageState.success;
-        searchResults.clear();
-        searchResults.addAll(response);
-      },
-    );
+      response.fold(
+        (failure) {
+          pageState.value = PageState.error;
+        },
+        (response) {
+          pageState.value = PageState.success;
+          searchResults.clear();
+          searchResults.addAll(response);
+        },
+      );
+    });
   }
 }
