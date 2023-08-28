@@ -22,8 +22,8 @@ class AppWidget extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.dark,
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
       child: MaterialApp.router(
