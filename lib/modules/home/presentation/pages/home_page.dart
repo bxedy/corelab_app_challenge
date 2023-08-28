@@ -8,6 +8,7 @@ import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_colors.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
 import '../../../shared/presentation/components/item_widget.dart';
+import '../../../shared/presentation/components/products_shimmer_skeleton_widget.dart';
 import '../components/custom_app_bar.dart';
 import '../controllers/home_controller.dart';
 
@@ -66,21 +67,22 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   const Height(10),
-                                  AppDivider(),
-                                  ItemWidget(productEntity: item),
-                                  AppDivider()
+                                  const AppDivider(),
+                                  ProductWidget(productEntity: item),
+                                  const AppDivider()
                                 ],
                               );
                             } else {
                               return Column(
-                                children: [ItemWidget(productEntity: item), AppDivider()],
+                                children: [
+                                  ProductWidget(productEntity: item),
+                                  const AppDivider(),
+                                ],
                               );
                             }
                           },
                         )
-                      : const Center(
-                          child: CircularProgressIndicator(),
-                        );
+                      : const ProductsShimmerSkeletonWidget();
                 },
               )
             ],

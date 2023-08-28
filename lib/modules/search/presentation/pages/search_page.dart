@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../core/domain/enums/page_state_enum.dart';
+import '../../../../core/ui/components/app_divider.dart';
 import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
 import '../../../shared/presentation/components/item_widget.dart';
+import '../../../shared/presentation/components/products_shimmer_skeleton_widget.dart';
 import '../../domain/enum/search_type_enum.dart';
 import '../components/custom_search_bar.dart';
 import '../components/no_results_widget.dart';
@@ -84,7 +86,12 @@ class _SearchPageState extends State<SearchPage> {
                           itemCount: controller.searchResults.value.length,
                           itemBuilder: (context, index) {
                             final item = controller.searchResults.value[index];
-                            return ItemWidget(productEntity: item);
+                            return Column(
+                              children: [
+                                AppDivider(),
+                                ProductWidget(productEntity: item),
+                              ],
+                            );
                           },
                         ),
                       ],
@@ -92,8 +99,16 @@ class _SearchPageState extends State<SearchPage> {
                   } else if (state == PageState.success && controller.searchResults.value.isEmpty) {
                     return NoResultsWidget(search: controller.searchTextEditingController.text);
                   } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text("Procurando...", style: AppTextStyles().medium),
+                        ),
+                        const Height(6),
+                        const ProductsShimmerSkeletonWidget(),
+                      ],
                     );
                   }
                 },

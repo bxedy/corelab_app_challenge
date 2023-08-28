@@ -17,6 +17,8 @@ dependencies:
   dartz: null
   dio: null
   shared_preferences: null
+  shimmer: ^2.0.0
+
   
 dev_dependencies:
   flutter_test:
