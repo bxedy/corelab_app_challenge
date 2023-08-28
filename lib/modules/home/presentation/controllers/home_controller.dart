@@ -1,6 +1,6 @@
 // Todos os tipos de cases que podem ser utilizados
 
-import 'package:corelab_app_challenge/modules/home/domain/entities/product_entity.dart';
+import 'package:corelab_app_challenge/modules/shared/domain/entities/product_entity.dart';
 import 'package:corelab_app_challenge/modules/home/domain/usecases/fetch_data_usecase.dart';
 import 'package:flutter/material.dart';
 

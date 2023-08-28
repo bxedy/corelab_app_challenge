@@ -72,7 +72,9 @@ class _SearchPageState extends State<SearchPage> {
                   } else if (state == SearchPageState.success && controller.searchResults.isEmpty) {
                     return const NoResultsWidget();
                   } else {
-                    return const CircularProgressIndicator();
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
                   }
                 },
               ),

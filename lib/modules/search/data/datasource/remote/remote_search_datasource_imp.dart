@@ -1,5 +1,5 @@
-import '../../../../home/data/models/product_model.dart';
-import '../../../../home/domain/entities/product_entity.dart';
+import '../../../../shared/data/models/product_model.dart';
+import '../../../../shared/domain/entities/product_entity.dart';
 import '../remote_search_datasource.dart';
 
 

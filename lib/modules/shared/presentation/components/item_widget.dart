@@ -5,7 +5,7 @@ import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/components/width.dart';
 import '../../../../core/ui/theme/app_colors.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
-import '../../../home/domain/entities/product_entity.dart';
+import '../../domain/entities/product_entity.dart';
 
 class ItemWidget extends StatelessWidget {
   final ProductEntity productEntity;

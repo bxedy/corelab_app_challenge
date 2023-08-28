@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
-import '../../../home/domain/entities/product_entity.dart';
+import '../../../shared/domain/entities/product_entity.dart';
 import '../../domain/repository/search_repository.dart';
 import '../datasource/local_search_datasource.dart';
 import '../datasource/remote_search_datasource.dart';

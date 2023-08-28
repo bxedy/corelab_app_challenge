@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../home/domain/entities/product_entity.dart';
+import '../../../shared/domain/entities/product_entity.dart';
 import '../../domain/usecases/fetch_history_usecase.dart';
 import '../../domain/usecases/save_to_history_usecase.dart';
 import '../../domain/usecases/search.dart';
@@ -36,8 +36,8 @@ class SearchControlller {
     });
   }
 
-  Future<void> saveToHistory(String searchQuery) async {
-    await _saveToHistoryUsecase(searchQuery);
+  Future<void> saveToHistory(String search) async {
+    await _saveToHistoryUsecase(search);
     await fetchHistory();
   }
 
@@ -45,15 +45,16 @@ class SearchControlller {
     await Future.delayed(const Duration(seconds: 2));
 
     searchResults = [];
+    await fetchHistory();
     pageState.value = SearchPageState.initial;
   }
 
-  Future<void> fetchSearch(String searchQuery) async {
+  Future<void> fetchSearch(String search) async {
     pageState.value = SearchPageState.loading;
 
-    saveToHistory(searchQuery);
+    saveToHistory(search);
 
-    final response = await _searchUsecase(searchQuery);
+    final response = await _searchUsecase(search);
 
     response.fold(
       (failure) {

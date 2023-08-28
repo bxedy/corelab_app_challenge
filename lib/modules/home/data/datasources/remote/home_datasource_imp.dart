@@ -1,5 +1,5 @@
-import '../../../domain/entities/product_entity.dart';
-import '../../models/product_model.dart';
+import '../../../../shared/domain/entities/product_entity.dart';
+import '../../../../shared/data/models/product_model.dart';
 import '../home_datasource.dart';
 
 class HomeDatasourceImp implements HomeDatasource {
