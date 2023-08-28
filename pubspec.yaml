@@ -26,9 +26,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    #i18n
-    - lib/core/i18n/common/
-    #assets
     - assets/icons/
 
   fonts:

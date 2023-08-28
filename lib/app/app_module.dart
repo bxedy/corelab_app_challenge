@@ -1,3 +1,4 @@
+import 'package:corelab_app_challenge/modules/search/search_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../modules/categories/categories_module.dart';
@@ -23,6 +24,11 @@ class AppModule extends Module {
           Modular.initialRoute,
           transition: appTransition,
           module: CategoriesModule(),
+        ),
+        ModuleRoute(
+          Modular.initialRoute,
+          transition: TransitionType.rightToLeft,
+          module: SearchModule(),
         ),
       ];
 }
