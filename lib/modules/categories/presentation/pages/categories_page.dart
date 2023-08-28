@@ -34,6 +34,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgrounColor,
       bottomNavigationBar: const AppBottomNavigation(currentPage: AvailablePages.categories),
       body: SafeArea(
         child: SingleChildScrollView(

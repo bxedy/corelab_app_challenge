@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgrounColor,
       appBar: const CustomAppBar(),
       bottomNavigationBar: const AppBottomNavigation(currentPage: AvailablePages.home),
       body: SafeArea(
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                   style: AppTextStyles().larger,
                 ),
               ),
-              const Height(20),
+              const Height(10),
               ValueListenableBuilder(
                 valueListenable: controller.pageState,
                 builder: (context, state, child) {
@@ -54,6 +55,7 @@ class _HomePageState extends State<HomePage> {
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  const Height(10),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 12),
                                     child: Text(
