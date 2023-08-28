@@ -23,9 +23,12 @@ class SearchItem extends StatelessWidget {
                 color: AppColors.neutralGrey,
               ),
               const Width(14),
-              Text(
-                "Exemplo pesquisa recente",
-                style: AppTextStyles(weight: FontWeight.w400, color: AppColors.neutralGrey).large,
+              Expanded(
+                child: Text(
+                  "Exemplo pesquisa recente",
+                  style: AppTextStyles(weight: FontWeight.w400, color: AppColors.neutralGrey).large,
+                  overflow: TextOverflow.ellipsis,
+                ),
               )
             ],
           ),
