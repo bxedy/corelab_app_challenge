@@ -2,16 +2,17 @@ import 'package:corelab_app_challenge/modules/home/data/models/installments_mode
 import 'package:corelab_app_challenge/modules/home/domain/entities/product_entity.dart';
 
 class ProductModel extends ProductEntity {
-  ProductModel(
-      {super.categoria,
-      super.dataAnuncio,
-      super.titulo,
-      super.desconto,
-      super.precoAntigo,
-      super.preco,
-      super.novo,
-      required super.parcelas,
-      super.imagem});
+  ProductModel({
+    required super.categoria,
+    required super.dataAnuncio,
+    required super.titulo,
+    super.desconto,
+    super.precoAntigo,
+    required super.preco,
+    required super.novo,
+    required super.parcelas,
+    required super.imagem,
+  });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
       categoria: json['categoria'],

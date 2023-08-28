@@ -6,7 +6,7 @@ import '../home_datasource.dart';
 class HomeDatasourceImp implements HomeDatasource {
   @override
   Future<List<ProductEntity>> fetchData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     return mockedData.map<ProductEntity>((json) => ProductModel.fromJson(json)).toList();
   }

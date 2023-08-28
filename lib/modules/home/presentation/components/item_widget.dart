@@ -32,13 +32,19 @@ class ItemWidget extends StatelessWidget {
                   "https://cdn.dentalcremer.com.br/produtos/550/condicionador-acido-fosforico-37-allprime-859980-01-dental-cremer.jpg",
             ),
             const Width(16),
-            Container(
+            SizedBox(
               width: 220,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if (productEntity.precoAntigo != null) ...[
                     Container(
+                      decoration: const BoxDecoration(
+                        color: AppColors.defaultCyan,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(4),
+                        ),
+                      ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                         child: Text(
@@ -46,17 +52,11 @@ class ItemWidget extends StatelessWidget {
                           style: AppTextStyles(color: AppColors.white).tiny,
                         ),
                       ),
-                      decoration: const BoxDecoration(
-                        color: AppColors.defaultCyan,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(4),
-                        ),
-                      ),
                     ),
                     const Height(6)
                   ],
                   Text(
-                    productEntity.titulo ?? '',
+                    productEntity.titulo,
                     style: AppTextStyles(weight: FontWeight.w400).medium,
                   ),
                   const Height(6),

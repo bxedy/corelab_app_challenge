@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 12),
                                     child: Text(
-                                      item.dataAnuncio!,
+                                      item.dataAnuncio,
                                       style: AppTextStyles(color: AppColors.neutralGrey).small,
                                     ),
                                   ),

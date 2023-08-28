@@ -12,6 +12,6 @@ class CategoriesModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(AppRoutes.categories, child: ((context, args) =>  CategoriesPage())),
+    ChildRoute(AppRoutes.categories, child: ((context, args) =>  const CategoriesPage())),
   ];
 }
