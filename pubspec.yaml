@@ -13,6 +13,9 @@ dependencies:
   localization: ^2.1.0
   flutter_svg: ^2.0.7
   flutter_localization: ^0.1.13
+  cached_network_image: ^3.2.3
+  dartz: null
+  dio: null
   
 dev_dependencies:
   flutter_test:
@@ -27,3 +30,17 @@ flutter:
     - lib/core/i18n/common/
     #assets
     - assets/icons/
+
+  fonts:
+    - family: DMSans
+      fonts:
+        - asset: assets/fonts/DMSans/DMSans_Regular.ttf
+        - asset: assets/fonts/DMSans/DMSans_Black.ttf
+        - asset: assets/fonts/DMSans/DMSans_BlackItalic.ttf
+        - asset: assets/fonts/DMSans/DMSans_Bold.ttf
+        - asset: assets/fonts/DMSans/DMSans_BoldItalic.ttf
+        - asset: assets/fonts/DMSans/DMSans_Italic.ttf
+        - asset: assets/fonts/DMSans/DMSans_Light.ttf
+        - asset: assets/fonts/DMSans/DMSans_LightItalic.ttf
+        - asset: assets/fonts/DMSans/DMSans_Medium.ttf
+        - asset: assets/fonts/DMSans/DMSans_MediumItalic.ttf
