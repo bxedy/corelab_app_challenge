@@ -6,7 +6,6 @@ import '../../domain/usecases/fetch_history_usecase.dart';
 import '../../domain/usecases/save_to_history_usecase.dart';
 import '../../domain/usecases/search.dart';
 
-
 class SearchControlller {
   final SaveToHistoryUsecase _saveToHistoryUsecase;
   final SearchUsecase _searchUsecase;
@@ -49,7 +48,7 @@ class SearchControlller {
     pageState.value = PageState.initial;
   }
 
-  Future<void> fetchSearch(String search) async {
+  Future<void> search(String search) async {
     pageState.value = PageState.loading;
 
     saveToHistory(search);

@@ -1,14 +1,14 @@
-import '../../../../core/domain/enums/pagestate_enum.dart';
-import '../controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../core/domain/enums/pagestate_enum.dart';
 import '../../../../core/ui/components/app_bottom_navigation_bar.dart';
 import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_colors.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
-import '../components/custom_app_bar.dart';
 import '../../../shared/presentation/components/item_widget.dart';
+import '../components/custom_app_bar.dart';
+import '../controllers/home_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -73,7 +73,9 @@ class _HomePageState extends State<HomePage> {
                             }
                           },
                         )
-                      : const CircularProgressIndicator();
+                      : const Center(
+                          child: CircularProgressIndicator(),
+                        );
                 },
               )
             ],

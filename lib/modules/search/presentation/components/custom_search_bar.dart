@@ -37,7 +37,7 @@ class CustomSearchBar extends StatelessWidget implements PreferredSizeWidget {
                 controller.undoSearch();
                 controller.fetchHistory();
               } else {
-                controller.fetchSearch(value);
+                controller.search(value);
               }
             },
             cursorColor: AppColors.defaultCyan,

@@ -6,7 +6,7 @@ import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
 import '../../../shared/presentation/components/item_widget.dart';
 import '../components/no_results_widget.dart';
-import '../components/search_bar.dart';
+import '../components/custom_search_bar.dart';
 import '../components/search_item.dart';
 import '../controllers/search_controller.dart';
 
@@ -45,7 +45,7 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         const Height(6),
                         ...controller.searchHistory
-                            .map((e) => SearchItem(name: e, onTap: () => controller.fetchSearch(e)))
+                            .map((e) => SearchItem(name: e, onTap: () => controller.search(e)))
                             .toList(),
                       ],
                     );
