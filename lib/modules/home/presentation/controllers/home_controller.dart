@@ -6,24 +6,15 @@ import 'package:flutter/material.dart';
 
 enum HomePageState { initial, loading, error, success }
 
-abstract class IHomeController extends ChangeNotifier {
-  Future<void> fetchData();
-  List<ProductEntity>? productsList;
-  late ValueNotifier<HomePageState> pageState;
-}
-
-class HomeController extends IHomeController {
+class HomeController {
   final FetchDataUsecase _fetchDataUsecase;
 
   HomeController(this._fetchDataUsecase);
 
-  @override
   ValueNotifier<HomePageState> pageState = ValueNotifier(HomePageState.initial);
 
-  @override
   List<ProductEntity>? productsList;
 
-  @override
   Future<void> fetchData() async {
     pageState.value = HomePageState.loading;
     final response = await _fetchDataUsecase();

@@ -1,4 +1,4 @@
-import 'package:corelab_app_challenge/modules/home/domain/entities/installments_entity.dart';
+import 'installments_entity.dart';
 
 class ProductEntity {
   final String categoria;

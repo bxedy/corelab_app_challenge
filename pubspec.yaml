@@ -16,6 +16,7 @@ dependencies:
   cached_network_image: ^3.2.3
   dartz: null
   dio: null
+  shared_preferences: null
   
 dev_dependencies:
   flutter_test:
@@ -27,6 +28,8 @@ flutter:
 
   assets:
     - assets/icons/
+    - assets/images/
+
 
   fonts:
     - family: DMSans

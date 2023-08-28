@@ -1,8 +1,8 @@
-import 'package:corelab_app_challenge/modules/home/domain/entities/product_entity.dart';
+import '../entities/product_entity.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/error/failure.dart';
-import '../repositories/home_repository.dart';
+import '../../../../core/errors/failure.dart';
+import '../repository/home_repository.dart';
 
 abstract class FetchDataUsecase {
   Future<Either<Failure, List<ProductEntity>>> call();

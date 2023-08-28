@@ -1,4 +1,4 @@
-import 'package:corelab_app_challenge/modules/home/presentation/controllers/home_controller.dart';
+import '../controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -7,7 +7,7 @@ import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_colors.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
 import '../components/custom_app_bar.dart';
-import '../components/item_widget.dart';
+import '../../../shared/presentation/components/item_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

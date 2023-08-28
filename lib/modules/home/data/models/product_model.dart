@@ -1,5 +1,5 @@
-import 'package:corelab_app_challenge/modules/home/data/models/installments_model.dart';
-import 'package:corelab_app_challenge/modules/home/domain/entities/product_entity.dart';
+import '../../domain/entities/product_entity.dart';
+import 'installments_model.dart';
 
 class ProductModel extends ProductEntity {
   ProductModel({
