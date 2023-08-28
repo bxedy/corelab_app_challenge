@@ -4,7 +4,7 @@ import 'package:corelab_app_challenge/modules/shared/domain/entities/product_ent
 import 'package:corelab_app_challenge/modules/home/domain/usecases/fetch_data_usecase.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/domain/enums/pagestate_enum.dart';
+import '../../../../core/domain/enums/page_state_enum.dart';
 
 
 class HomeController {

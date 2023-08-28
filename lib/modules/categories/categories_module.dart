@@ -7,7 +7,7 @@ import 'presentation/pages/categories_page.dart';
 class CategoriesModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.factory<ICategoriesController>((i) => CategoriesController()),
+    Bind.factory<CategoriesController>((i) => CategoriesController()),
   ];
 
   @override

@@ -6,9 +6,11 @@ import '../../../../core/ui/theme/app_images.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
 
 class NoResultsWidget extends StatelessWidget {
+  final String search;
   const NoResultsWidget({
-    super.key,
-  });
+    Key? key,
+    required this.search,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class NoResultsWidget extends StatelessWidget {
             ),
             const Height(10),
             Text(
-              "Não encontramos nenhum resultado parecido com \"chinelo\".",
+              "Não encontramos nenhum resultado parecido com \"$search\".",
               style: AppTextStyles(color: AppColors.neutralGrey).medium,
               textAlign: TextAlign.center,
             ),

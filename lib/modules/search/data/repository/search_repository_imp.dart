@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../../../shared/domain/entities/product_entity.dart';
+import '../../domain/enum/search_type_enum.dart';
 import '../../domain/repository/search_repository.dart';
 import '../datasource/local_search_datasource.dart';
 import '../datasource/remote_search_datasource.dart';
@@ -37,7 +38,7 @@ class SearchRepositoryImp extends SearchRepository {
   }
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> search(String search) async {
+  Future<Either<Failure, List<ProductEntity>>> search(String search, {SearchType? searchType = SearchType.byTitle}) async {
     try {
       final response = await _remoteSearchDatasource.search(search);
       return Right(response);

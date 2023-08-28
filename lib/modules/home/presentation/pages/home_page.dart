@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../core/domain/enums/pagestate_enum.dart';
+import '../../../../core/domain/enums/page_state_enum.dart';
 import '../../../../core/ui/components/app_bottom_navigation_bar.dart';
+import '../../../../core/ui/components/app_divider.dart';
 import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_colors.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
@@ -65,11 +66,15 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   const Height(10),
+                                  AppDivider(),
                                   ItemWidget(productEntity: item),
+                                  AppDivider()
                                 ],
                               );
                             } else {
-                              return ItemWidget(productEntity: item);
+                              return Column(
+                                children: [ItemWidget(productEntity: item), AppDivider()],
+                              );
                             }
                           },
                         )

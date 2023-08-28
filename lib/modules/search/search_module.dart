@@ -54,6 +54,6 @@ class SearchModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(AppRoutes.search, child: ((context, args) => const SearchPage())),
+    ChildRoute(AppRoutes.search, child: ((context, args) => SearchPage(categoryToSearch: args.data))),
   ];
 }

@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../core/domain/enums/pagestate_enum.dart';
+import '../../../../core/domain/enums/page_state_enum.dart';
 import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
 import '../../../shared/presentation/components/item_widget.dart';
-import '../components/no_results_widget.dart';
+import '../../domain/enum/search_type_enum.dart';
 import '../components/custom_search_bar.dart';
+import '../components/no_results_widget.dart';
 import '../components/search_item.dart';
 import '../controllers/search_controller.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  final String? categoryToSearch;
+
+  const SearchPage({
+    Key? key,
+    this.categoryToSearch,
+  }) : super(key: key);
 
   @override
   State<SearchPage> createState() => _SearchPageState();
@@ -19,6 +25,14 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   final controller = Modular.get<SearchControlller>()..fetchHistory();
+
+  @override
+  void initState() {
+    if (widget.categoryToSearch != null) {
+      controller.search(widget.categoryToSearch!, searchType: SearchType.byCategory);
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,35 +59,40 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         const Height(6),
                         ...controller.searchHistory
-                            .map((e) => SearchItem(name: e, onTap: () => controller.search(e)))
+                            .map(
+                              (e) => SearchItem(
+                                name: e,
+                                onTap: () => controller.onHistoryClick(e),
+                              ),
+                            )
                             .toList(),
                       ],
                     );
-                  } else if (state == PageState.success && controller.searchResults.isNotEmpty) {
+                  } else if (state == PageState.success && controller.searchResults.value.isNotEmpty) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
-                          child: Text("${controller.searchResults.length} resultados encontrados",
+                          child: Text("${controller.searchResults.value.length} resultados encontrados",
                               style: AppTextStyles().medium),
                         ),
                         const Height(6),
                         ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: controller.searchResults.length,
+                          itemCount: controller.searchResults.value.length,
                           itemBuilder: (context, index) {
-                            final item = controller.searchResults[index];
+                            final item = controller.searchResults.value[index];
                             return ItemWidget(productEntity: item);
                           },
                         ),
                       ],
                     );
-                  } else if (state == PageState.success && controller.searchResults.isEmpty) {
-                    return const NoResultsWidget();
+                  } else if (state == PageState.success && controller.searchResults.value.isEmpty) {
+                    return NoResultsWidget(search: controller.searchTextEditingController.text);
                   } else {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }

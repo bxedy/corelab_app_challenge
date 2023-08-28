@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/domain/debouncer.dart';
-import '../../../../core/domain/enums/pagestate_enum.dart';
+import '../../../../core/domain/enums/page_state_enum.dart';
 import '../../../shared/domain/entities/product_entity.dart';
+import '../../domain/enum/search_type_enum.dart';
 import '../../domain/usecases/fetch_history_usecase.dart';
 import '../../domain/usecases/save_to_history_usecase.dart';
 import '../../domain/usecases/search.dart';
@@ -18,8 +19,8 @@ class SearchControlller {
     this._fetchHistoryUsecase,
   );
 
-  List<ProductEntity> searchResults = [];
   final List<String> searchHistory = [];
+  ValueNotifier<List<ProductEntity>> searchResults = ValueNotifier([]);
   final ValueNotifier<PageState> pageState = ValueNotifier(PageState.initial);
   final TextEditingController searchTextEditingController = TextEditingController();
   final Debouncer _searchDebouncer = Debouncer(const Duration(seconds: 1)); // Defina o atraso de 2 segundos
@@ -37,6 +38,12 @@ class SearchControlller {
     });
   }
 
+  Future<void> onHistoryClick(String search) async {
+    searchTextEditingController.text = search;
+
+    this.search(search);
+  }
+
   Future<void> saveToHistory(String search) async {
     await _saveToHistoryUsecase(search);
     await fetchHistory();
@@ -45,19 +52,22 @@ class SearchControlller {
   void undoSearch() async {
     await Future.delayed(const Duration(seconds: 4));
 
-    searchResults = [];
+    searchResults.value = [];
+    searchTextEditingController.clear();
     await fetchHistory();
     pageState.value = PageState.initial;
   }
 
-  Future<void> search(String search) async {
+  Future<void> search(String search, {SearchType? searchType = SearchType.byTitle}) async {
+    searchTextEditingController.text = search;
+
     pageState.value = PageState.loading;
 
     _searchDebouncer.cancel();
     _searchDebouncer.run(() async {
       saveToHistory(search);
 
-      final response = await _searchUsecase(search);
+      final response = await _searchUsecase(search, searchType: searchType);
 
       response.fold(
         (failure) {
@@ -65,7 +75,7 @@ class SearchControlller {
         },
         (response) {
           pageState.value = PageState.success;
-          searchResults = response;
+          searchResults.value = [...response];
         },
       );
     });
