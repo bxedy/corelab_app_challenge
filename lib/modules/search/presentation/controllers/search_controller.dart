@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/domain/enums/pagestate_enum.dart';
 import '../../../shared/domain/entities/product_entity.dart';
 import '../../domain/usecases/fetch_history_usecase.dart';
 import '../../domain/usecases/save_to_history_usecase.dart';
 import '../../domain/usecases/search.dart';
 
-enum SearchPageState { initial, loading, error, success }
 
 class SearchControlller {
   final SaveToHistoryUsecase _saveToHistoryUsecase;
@@ -20,17 +20,17 @@ class SearchControlller {
 
   List<ProductEntity> searchResults = [];
   final List<String> searchHistory = [];
-  final ValueNotifier<SearchPageState> pageState = ValueNotifier(SearchPageState.initial);
+  final ValueNotifier<PageState> pageState = ValueNotifier(PageState.initial);
   final TextEditingController searchTextEditingController = TextEditingController();
 
   Future<void> fetchHistory() async {
-    pageState.value = SearchPageState.loading;
+    pageState.value = PageState.loading;
 
     final response = await _fetchHistoryUsecase();
     response.fold((failure) {
       debugPrint(failure.message);
     }, (response) {
-      pageState.value = SearchPageState.initial;
+      pageState.value = PageState.initial;
 
       searchHistory.addAll(response);
     });
@@ -46,11 +46,11 @@ class SearchControlller {
 
     searchResults = [];
     await fetchHistory();
-    pageState.value = SearchPageState.initial;
+    pageState.value = PageState.initial;
   }
 
   Future<void> fetchSearch(String search) async {
-    pageState.value = SearchPageState.loading;
+    pageState.value = PageState.loading;
 
     saveToHistory(search);
 
@@ -58,10 +58,10 @@ class SearchControlller {
 
     response.fold(
       (failure) {
-        pageState.value = SearchPageState.error;
+        pageState.value = PageState.error;
       },
       (response) {
-        pageState.value = SearchPageState.success;
+        pageState.value = PageState.success;
         searchResults.clear();
         searchResults.addAll(response);
       },

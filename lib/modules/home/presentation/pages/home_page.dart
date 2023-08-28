@@ -1,3 +1,4 @@
+import '../../../../core/domain/enums/pagestate_enum.dart';
 import '../controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
               ValueListenableBuilder(
                 valueListenable: controller.pageState,
                 builder: (context, state, child) {
-                  return state == HomePageState.success
+                  return state == PageState.success
                       ? ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,

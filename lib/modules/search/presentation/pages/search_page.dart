@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../core/domain/enums/pagestate_enum.dart';
 import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
 import '../../../shared/presentation/components/item_widget.dart';
@@ -32,7 +33,7 @@ class _SearchPageState extends State<SearchPage> {
               ValueListenableBuilder(
                 valueListenable: controller.pageState,
                 builder: (context, state, child) {
-                  if (state == SearchPageState.initial &&
+                  if (state == PageState.initial &&
                       controller.searchTextEditingController.text.isEmpty &&
                       controller.searchHistory.isNotEmpty) {
                     return Column(
@@ -48,7 +49,7 @@ class _SearchPageState extends State<SearchPage> {
                             .toList(),
                       ],
                     );
-                  } else if (state == SearchPageState.success && controller.searchResults.isNotEmpty) {
+                  } else if (state == PageState.success && controller.searchResults.isNotEmpty) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -69,7 +70,7 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                       ],
                     );
-                  } else if (state == SearchPageState.success && controller.searchResults.isEmpty) {
+                  } else if (state == PageState.success && controller.searchResults.isEmpty) {
                     return const NoResultsWidget();
                   } else {
                     return Center(
