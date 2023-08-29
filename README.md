@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <title>CoreLab App Challenge</title>
-</head>
+<html
 
 <body>
 
