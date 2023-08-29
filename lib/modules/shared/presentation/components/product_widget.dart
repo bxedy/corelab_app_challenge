@@ -67,7 +67,7 @@ class ProductWidget extends StatelessWidget {
                       if (productEntity.precoAntigo != null) ...[
                         Text(
                           'R\$ ${productEntity.precoAntigo?.toStringAsFixed(2) ?? "00,00"}',
-                          style: AppTextStyles(color: AppColors.neutralGrey).small.copyWith(
+                          style: AppTextStyles(color: AppColors.tertiaryGray).small.copyWith(
                                 decoration: TextDecoration.lineThrough,
                               ),
                         )
@@ -83,7 +83,7 @@ class ProductWidget extends StatelessWidget {
                       const Height(6),
                       Text(
                         "Novo",
-                        style: AppTextStyles(color: AppColors.neutralGrey).smaller,
+                        style: AppTextStyles(color: AppColors.tertiaryGray).smaller,
                       ),
                     ],
                   ),

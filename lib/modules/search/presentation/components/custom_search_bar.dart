@@ -63,7 +63,7 @@ class CustomSearchBar extends StatelessWidget implements PreferredSizeWidget {
                                 visible: searchResults.isNotEmpty,
                                 child: const Icon(
                                   Icons.close,
-                                  color: AppColors.grey2,
+                                  color: AppColors.primaryGrey,
                                 ),
                               ),
                             ),
@@ -71,7 +71,7 @@ class CustomSearchBar extends StatelessWidget implements PreferredSizeWidget {
                             border: InputBorder.none,
                             hintText: '',
                             hintStyle: const TextStyle(
-                              color: AppColors.grey,
+                              color: AppColors.secondaryGrey,
                               fontWeight: FontWeight.w400,
                             ),
                           ),

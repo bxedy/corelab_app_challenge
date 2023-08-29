@@ -90,6 +90,7 @@ class _SearchPageState extends State<SearchPage> {
                               children: [
                                 const AppDivider(),
                                 ProductWidget(productEntity: item),
+                                if (index + 1 == controller.searchResults.value.length) const AppDivider()
                               ],
                             );
                           },

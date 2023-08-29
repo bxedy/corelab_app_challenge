@@ -44,7 +44,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     children: [
                       Text(
                         'Buscar',
-                        style: AppTextStyles(color: AppColors.grey, weight: FontWeight.w400).medium,
+                        style: AppTextStyles(color: AppColors.secondaryGrey, weight: FontWeight.w400).medium,
                       ),
                       const Icon(Icons.search, color: AppColors.defaultCyan),
                     ],

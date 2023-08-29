@@ -24,13 +24,13 @@ class SearchItem extends StatelessWidget {
             children: [
               const Icon(
                 Icons.history,
-                color: AppColors.neutralGrey,
+                color: AppColors.tertiaryGray,
               ),
               const Width(14),
               Expanded(
                 child: Text(
                   name,
-                  style: AppTextStyles(weight: FontWeight.w400, color: AppColors.neutralGrey).large,
+                  style: AppTextStyles(weight: FontWeight.w400, color: AppColors.tertiaryGray).large,
                   overflow: TextOverflow.ellipsis,
                 ),
               )
