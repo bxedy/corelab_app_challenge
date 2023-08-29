@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/domain/debouncer.dart';
+import '../../../../core/utils/debouncer.dart';
 import '../../../../core/domain/enums/page_state_enum.dart';
 import '../../../shared/domain/entities/product_entity.dart';
 import '../../domain/enum/search_type_enum.dart';
 import '../../domain/usecases/fetch_history_usecase.dart';
 import '../../domain/usecases/save_to_history_usecase.dart';
-import '../../domain/usecases/search.dart';
+import '../../domain/usecases/search_usecase.dart';
 
 class SearchControlller {
   final SaveToHistoryUsecase _saveToHistoryUsecase;
@@ -25,7 +25,7 @@ class SearchControlller {
   final TextEditingController searchTextEditingController = TextEditingController();
 
   final Debouncer _searchDebouncer = Debouncer(const Duration(seconds: 1));
-  
+
   List<String> searchHistory = [];
 
   Future<void> fetchHistory() async {

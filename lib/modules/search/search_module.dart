@@ -9,7 +9,7 @@ import 'data/repository/search_repository_imp.dart';
 import 'domain/repository/search_repository.dart';
 import 'domain/usecases/fetch_history_usecase.dart';
 import 'domain/usecases/save_to_history_usecase.dart';
-import 'domain/usecases/search.dart';
+import 'domain/usecases/search_usecase.dart';
 import 'presentation/controllers/search_controller.dart';
 import 'presentation/pages/search_page.dart';
 
@@ -24,7 +24,7 @@ class SearchModule extends Module {
       ),
     ),
     Bind.factory<LocalSearchDatasource>(
-      (i) => LocalSearchDataSourceImp(),
+      (i) => LocalSearchDatasourceImp(),
     ),
     Bind.factory<RemoteSearchDatasource>(
       (i) => RemoteSearchDatasourceImp(),
