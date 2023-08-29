@@ -66,14 +66,14 @@ class ProductWidget extends StatelessWidget {
                       const Height(6),
                       if (productEntity.precoAntigo != null) ...[
                         Text(
-                          'R\$ ${productEntity.precoAntigo}',
+                          'R\$ ${productEntity.precoAntigo?.toStringAsFixed(2) ?? "00,00"}',
                           style: AppTextStyles(color: AppColors.neutralGrey).small.copyWith(
                                 decoration: TextDecoration.lineThrough,
                               ),
                         )
                       ],
                       Text(
-                        'R\$ ${productEntity.preco}',
+                        'R\$ ${productEntity.preco.toStringAsFixed(2)}',
                         style: AppTextStyles().larger,
                       ),
                       Text(

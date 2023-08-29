@@ -8,17 +8,13 @@ class RemoteSearchDatasourceImp extends RemoteSearchDatasource {
   Future<List<ProductEntity>> search(String search, {SearchType? searchType}) async {
     final List<ProductEntity> foundProducts = [];
 
-    print(searchType.toString());
-
     for (var productMap in mockedData) {
       final product = ProductModel.fromJson(productMap);
 
       if (searchType == SearchType.byCategory && product.categoria.toLowerCase().contains(search.toLowerCase())) {
         foundProducts.add(product);
-        print("categoria");
       } else if (product.titulo.toLowerCase().startsWith(search.toLowerCase())) {
         foundProducts.add(product);
-        print("title");
       }
     }
     await Future.delayed(const Duration(seconds: 2));

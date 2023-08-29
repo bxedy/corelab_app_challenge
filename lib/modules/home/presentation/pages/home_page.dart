@@ -7,7 +7,7 @@ import '../../../../core/ui/components/app_divider.dart';
 import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_colors.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
-import '../../../shared/presentation/components/item_widget.dart';
+import '../../../shared/presentation/components/product_widget.dart';
 import '../../../shared/presentation/components/products_shimmer_skeleton_widget.dart';
 import '../components/custom_app_bar.dart';
 import '../controllers/home_controller.dart';
