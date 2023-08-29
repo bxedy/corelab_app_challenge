@@ -51,24 +51,29 @@ class _SearchPageState extends State<SearchPage> {
                 builder: (context, state, child) {
                   if (state == PageState.initial &&
                       controller.searchTextEditingController.text.isEmpty &&
-                      controller.searchHistory.isNotEmpty) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text("Pesquisas recentes", style: AppTextStyles().medium),
-                        ),
-                        const Height(6),
-                        ...controller.searchHistory
-                            .map(
-                              (e) => SearchItem(
-                                name: e,
-                                onTap: () => controller.onHistoryClick(e),
-                              ),
-                            )
-                            .toList(),
-                      ],
+                      controller.searchHistory.value.isNotEmpty) {
+                    return ValueListenableBuilder(
+                      valueListenable: controller.searchHistory,
+                      builder: (context, searchHistory, child) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Text("Pesquisas recentes", style: AppTextStyles().medium),
+                            ),
+                            const Height(6),
+                            ...searchHistory
+                                .map(
+                                  (e) => SearchItem(
+                                    name: e,
+                                    onTap: () => controller.onHistoryClick(e),
+                                  ),
+                                )
+                                .toList(),
+                          ],
+                        );
+                      },
                     );
                   } else if (state == PageState.success && controller.searchResults.value.isNotEmpty) {
                     return Column(

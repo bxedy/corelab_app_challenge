@@ -26,7 +26,7 @@ class SearchControlller {
 
   final Debouncer _searchDebouncer = Debouncer(const Duration(seconds: 1));
 
-  List<String> searchHistory = [];
+  ValueNotifier<List<String>> searchHistory = ValueNotifier([]);
 
   Future<void> fetchHistory() async {
     pageState.value = PageState.loading;
@@ -37,7 +37,9 @@ class SearchControlller {
     }, (response) {
       pageState.value = PageState.initial;
 
-      searchHistory = [...response];
+      searchHistory.value = [...response];
+
+      print(searchHistory.value[0]);
     });
   }
 
