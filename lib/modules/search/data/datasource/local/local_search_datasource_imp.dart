@@ -18,7 +18,6 @@ class LocalSearchDatasourceImp extends LocalSearchDatasource {
     final prefs = await SharedPreferences.getInstance();
     List<String> history = await fetchHistory();
 
-    if (!history.contains(search)) {
       history = [search, ...history];
 
       if (history.length > _maxHistorySize) {
@@ -26,6 +25,6 @@ class LocalSearchDatasourceImp extends LocalSearchDatasource {
       }
 
       await prefs.setStringList(_historyKey, history);
-    }
+    
   }
 }
