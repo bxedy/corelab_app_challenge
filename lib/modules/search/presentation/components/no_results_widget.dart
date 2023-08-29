@@ -30,7 +30,7 @@ class NoResultsWidget extends StatelessWidget {
             const Height(10),
             Text(
               "Não encontramos nenhum resultado parecido com \"$search\".",
-              style: AppTextStyles(color: AppColors.neutralGrey).medium,
+              style: AppTextStyles(color: AppColors.tertiaryGray).medium,
               textAlign: TextAlign.center,
             ),
           ],
