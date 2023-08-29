@@ -69,7 +69,7 @@ class CustomSearchBar extends StatelessWidget implements PreferredSizeWidget {
                             ),
                             suffixIconConstraints: const BoxConstraints(maxHeight: 24),
                             border: InputBorder.none,
-                            hintText: 'Pesquisar',
+                            hintText: '',
                             hintStyle: const TextStyle(
                               color: AppColors.grey,
                               fontWeight: FontWeight.w400,

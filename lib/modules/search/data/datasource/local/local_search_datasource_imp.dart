@@ -10,19 +10,19 @@ class LocalSearchDataSourceImp extends LocalSearchDatasource {
   Future<List<String>> fetchHistory() async {
     final prefs = await SharedPreferences.getInstance();
     final history = prefs.getStringList(_historyKey) ?? [];
-    return history.reversed.toList();
+    return history.toList();
   }
 
   @override
   Future<void> saveToHistory(String search) async {
     final prefs = await SharedPreferences.getInstance();
-    final history = await fetchHistory();
+    List<String> history = await fetchHistory();
 
     if (!history.contains(search)) {
-      history.add(search);
+      history = [search, ...history];
 
       if (history.length > _maxHistorySize) {
-        history.removeRange(0, history.length - _maxHistorySize);
+        history.removeRange(history.length - _maxHistorySize, history.length);
       }
 
       await prefs.setStringList(_historyKey, history);

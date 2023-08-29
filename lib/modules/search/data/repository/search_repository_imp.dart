@@ -38,9 +38,9 @@ class SearchRepositoryImp extends SearchRepository {
   }
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> search(String search, {SearchType? searchType = SearchType.byTitle}) async {
+  Future<Either<Failure, List<ProductEntity>>> search(String search, {SearchType? searchType}) async {
     try {
-      final response = await _remoteSearchDatasource.search(search);
+      final response = await _remoteSearchDatasource.search(search, searchType: searchType);
       return Right(response);
     } on Failure catch (_) {
       return Left(Failure());

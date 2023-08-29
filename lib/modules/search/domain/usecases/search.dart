@@ -6,7 +6,7 @@ import '../../../shared/domain/entities/product_entity.dart';
 import '../repository/search_repository.dart';
 
 abstract class SearchUsecase {
-  Future<Either<Failure, List<ProductEntity>>> call(String search, {SearchType? searchType = SearchType.byTitle});
+  Future<Either<Failure, List<ProductEntity>>> call(String search, {SearchType? searchType});
 }
 
 class SearchUsecaseImp extends SearchUsecase {
@@ -15,7 +15,7 @@ class SearchUsecaseImp extends SearchUsecase {
   SearchUsecaseImp(this._searchRepository);
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> call(String search, {SearchType? searchType = SearchType.byTitle}) async {
-    return await _searchRepository.search(search, );
+  Future<Either<Failure, List<ProductEntity>>> call(String search, {SearchType? searchType}) async {
+    return await _searchRepository.search(search, searchType: searchType);
   }
 }

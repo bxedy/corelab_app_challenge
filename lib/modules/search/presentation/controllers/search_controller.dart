@@ -19,11 +19,14 @@ class SearchControlller {
     this._fetchHistoryUsecase,
   );
 
-  final List<String> searchHistory = [];
   ValueNotifier<List<ProductEntity>> searchResults = ValueNotifier([]);
   final ValueNotifier<PageState> pageState = ValueNotifier(PageState.initial);
+
   final TextEditingController searchTextEditingController = TextEditingController();
-  final Debouncer _searchDebouncer = Debouncer(const Duration(seconds: 1)); // Defina o atraso de 2 segundos
+
+  final Debouncer _searchDebouncer = Debouncer(const Duration(seconds: 1));
+  
+  List<String> searchHistory = [];
 
   Future<void> fetchHistory() async {
     pageState.value = PageState.loading;
@@ -34,7 +37,7 @@ class SearchControlller {
     }, (response) {
       pageState.value = PageState.initial;
 
-      searchHistory.addAll(response);
+      searchHistory = [...response];
     });
   }
 
@@ -50,21 +53,22 @@ class SearchControlller {
   }
 
   void undoSearch() async {
-    await Future.delayed(const Duration(seconds: 4));
-
-    searchResults.value = [];
     searchTextEditingController.clear();
+    searchResults.value = [];
     await fetchHistory();
     pageState.value = PageState.initial;
   }
 
-  Future<void> search(String search, {SearchType? searchType = SearchType.byTitle}) async {
-    searchTextEditingController.text = search;
-
-    pageState.value = PageState.loading;
-
+  Future<void> search(String search, {SearchType? searchType}) async {
+    if (search == '') return;
+    
     _searchDebouncer.cancel();
+
     _searchDebouncer.run(() async {
+      searchTextEditingController.text = search;
+
+      pageState.value = PageState.loading;
+
       saveToHistory(search);
 
       final response = await _searchUsecase(search, searchType: searchType);
