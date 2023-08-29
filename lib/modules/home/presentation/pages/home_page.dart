@@ -7,7 +7,7 @@ import '../../../../core/ui/components/app_divider.dart';
 import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_colors.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
-import '../../../shared/presentation/components/item_widget.dart';
+import '../../../shared/presentation/components/product_widget.dart';
 import '../../../shared/presentation/components/products_shimmer_skeleton_widget.dart';
 import '../components/custom_app_bar.dart';
 import '../controllers/home_controller.dart';
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                                     padding: const EdgeInsets.only(left: 12),
                                     child: Text(
                                       item.dataAnuncio,
-                                      style: AppTextStyles(color: AppColors.neutralGrey).small,
+                                      style: AppTextStyles(color: AppColors.tertiaryGray).small,
                                     ),
                                   ),
                                   const Height(10),

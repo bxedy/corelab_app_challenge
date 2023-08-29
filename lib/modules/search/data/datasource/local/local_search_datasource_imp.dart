@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../local_search_datasource.dart';
 
-class LocalSearchDataSourceImp extends LocalSearchDatasource {
+class LocalSearchDatasourceImp extends LocalSearchDatasource {
   static const _historyKey = 'search_history';
   static const _maxHistorySize = 15;
 

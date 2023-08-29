@@ -5,7 +5,7 @@ import '../../../../core/domain/enums/page_state_enum.dart';
 import '../../../../core/ui/components/app_divider.dart';
 import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
-import '../../../shared/presentation/components/item_widget.dart';
+import '../../../shared/presentation/components/product_widget.dart';
 import '../../../shared/presentation/components/products_shimmer_skeleton_widget.dart';
 import '../../domain/enum/search_type_enum.dart';
 import '../components/custom_search_bar.dart';
@@ -88,8 +88,9 @@ class _SearchPageState extends State<SearchPage> {
                             final item = controller.searchResults.value[index];
                             return Column(
                               children: [
-                                AppDivider(),
+                                const AppDivider(),
                                 ProductWidget(productEntity: item),
+                                if (index + 1 == controller.searchResults.value.length) const AppDivider()
                               ],
                             );
                           },
