@@ -26,7 +26,7 @@ class SearchControlller {
 
   final Debouncer _searchDebouncer = Debouncer(const Duration(seconds: 1));
 
-  List<String> searchHistory = [];
+  ValueNotifier<List<String>> searchHistory = ValueNotifier([]);
 
   Future<void> fetchHistory() async {
     pageState.value = PageState.loading;
@@ -37,7 +37,9 @@ class SearchControlller {
     }, (response) {
       pageState.value = PageState.initial;
 
-      searchHistory = [...response];
+      searchHistory.value = [...response];
+
+      print(searchHistory.value[0]);
     });
   }
 
@@ -63,7 +65,7 @@ class SearchControlller {
     _searchDebouncer.cancel();
 
     _searchDebouncer.run(() async {
-      if (searchTextEditingController.text == '' || search == '') {
+      if (searchType != SearchType.byCategory && (searchTextEditingController.text == '' || search == '')) {
         return;
       }
 
