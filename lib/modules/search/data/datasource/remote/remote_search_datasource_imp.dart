@@ -1,13 +1,29 @@
-import '../../../../shared/domain/entities/product_entity.dart';
 import '../../../../shared/data/models/product_model.dart';
-import '../home_datasource.dart';
+import '../../../../shared/domain/entities/product_entity.dart';
+import '../../../domain/enum/search_type_enum.dart';
+import '../remote_search_datasource.dart';
 
-class HomeDatasourceImp implements HomeDatasource {
+class RemoteSearchDatasourceImp extends RemoteSearchDatasource {
   @override
-  Future<List<ProductEntity>> fetchData() async {
+  Future<List<ProductEntity>> search(String search, {SearchType? searchType}) async {
+    final List<ProductEntity> foundProducts = [];
+
+    print(searchType.toString());
+
+    for (var productMap in mockedData) {
+      final product = ProductModel.fromJson(productMap);
+
+      if (searchType == SearchType.byCategory && product.categoria.toLowerCase().contains(search.toLowerCase())) {
+        foundProducts.add(product);
+        print("categoria");
+      } else if (product.titulo.toLowerCase().startsWith(search.toLowerCase())) {
+        foundProducts.add(product);
+        print("title");
+      }
+    }
     await Future.delayed(const Duration(seconds: 2));
 
-    return mockedData.map<ProductEntity>((json) => ProductModel.fromJson(json)).toList();
+    return foundProducts;
   }
 }
 

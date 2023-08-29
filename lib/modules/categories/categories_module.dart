@@ -7,11 +7,11 @@ import 'presentation/pages/categories_page.dart';
 class CategoriesModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.factory<ICategoriesController>((i) => CategoriesController()),
+    Bind.factory<CategoriesController>((i) => CategoriesController()),
   ];
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(AppRoutes.categories, child: ((context, args) =>  CategoriesPage())),
+    ChildRoute(AppRoutes.categories, child: ((context, args) =>  const CategoriesPage())),
   ];
 }
