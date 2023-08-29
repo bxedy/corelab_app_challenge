@@ -2,8 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../modules/categories/categories_module.dart';
 import '../modules/home/home_module.dart';
-
-const appTransition = TransitionType.fadeIn;
+import '../modules/search/search_module.dart';
 
 class AppModule extends Module {
   @override
@@ -16,13 +15,18 @@ class AppModule extends Module {
   List<ModularRoute> get routes => [
         ModuleRoute(
           Modular.initialRoute,
-          transition: appTransition,
+          transition: TransitionType.fadeIn,
           module: HomeModule(),
         ),
         ModuleRoute(
           Modular.initialRoute,
-          transition: appTransition,
+          transition: TransitionType.fadeIn,
           module: CategoriesModule(),
+        ),
+        ModuleRoute(
+          Modular.initialRoute,
+          transition: TransitionType.rightToLeft,
+          module: SearchModule(),
         ),
       ];
 }

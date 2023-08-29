@@ -1,12 +1,11 @@
-import 'package:corelab_app_challenge/modules/home/data/models/product_model.dart';
-import 'package:corelab_app_challenge/modules/home/domain/entities/product_entity.dart';
-
+import '../../../../shared/domain/entities/product_entity.dart';
+import '../../../../shared/data/models/product_model.dart';
 import '../home_datasource.dart';
 
 class HomeDatasourceImp implements HomeDatasource {
   @override
   Future<List<ProductEntity>> fetchData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     return mockedData.map<ProductEntity>((json) => ProductModel.fromJson(json)).toList();
   }

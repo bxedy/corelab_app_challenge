@@ -1,5 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:corelab_app_challenge/core/routes/app_routes.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-abstract class ICategoriesController extends ChangeNotifier {}
-
-class CategoriesController extends ICategoriesController {}
+class CategoriesController {
+  void searchForCategory(String categoryName) {
+    Modular.to.pushNamed(AppRoutes.search, arguments: categoryName);
+  }
+}

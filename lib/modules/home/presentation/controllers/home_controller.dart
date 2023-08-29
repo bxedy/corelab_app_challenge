@@ -1,37 +1,29 @@
 // Todos os tipos de cases que podem ser utilizados
 
-import 'package:corelab_app_challenge/modules/home/domain/entities/product_entity.dart';
+import 'package:corelab_app_challenge/modules/shared/domain/entities/product_entity.dart';
 import 'package:corelab_app_challenge/modules/home/domain/usecases/fetch_data_usecase.dart';
 import 'package:flutter/material.dart';
 
-enum HomePageState { initial, loading, error, success }
+import '../../../../core/domain/enums/page_state_enum.dart';
 
-abstract class IHomeController extends ChangeNotifier {
-  Future<void> fetchData();
-  List<ProductEntity>? productsList;
-  late ValueNotifier<HomePageState> pageState;
-}
 
-class HomeController extends IHomeController {
+class HomeController {
   final FetchDataUsecase _fetchDataUsecase;
 
   HomeController(this._fetchDataUsecase);
 
-  @override
-  ValueNotifier<HomePageState> pageState = ValueNotifier(HomePageState.initial);
+  ValueNotifier<PageState> pageState = ValueNotifier(PageState.initial);
 
-  @override
   List<ProductEntity>? productsList;
 
-  @override
   Future<void> fetchData() async {
-    pageState.value = HomePageState.loading;
+    pageState.value = PageState.loading;
     final response = await _fetchDataUsecase();
 
     response.fold((failure) {
-      pageState.value = HomePageState.error;
+      pageState.value = PageState.error;
     }, (response) {
-      pageState.value = HomePageState.success;
+      pageState.value = PageState.success;
 
       productsList = response;
     });

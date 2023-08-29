@@ -16,6 +16,9 @@ dependencies:
   cached_network_image: ^3.2.3
   dartz: null
   dio: null
+  shared_preferences: null
+  shimmer: ^2.0.0
+
   
 dev_dependencies:
   flutter_test:
@@ -26,10 +29,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    #i18n
-    - lib/core/i18n/common/
-    #assets
     - assets/icons/
+    - assets/images/
+
 
   fonts:
     - family: DMSans

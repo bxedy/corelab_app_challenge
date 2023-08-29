@@ -29,4 +29,6 @@ class AppTextStyles {
   TextStyle get large => _createTextStyle(18, weight);
 
   TextStyle get larger => _createTextStyle(20, weight);
+
+  TextStyle get huge => _createTextStyle(24, weight);
 }

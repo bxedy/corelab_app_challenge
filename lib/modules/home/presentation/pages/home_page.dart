@@ -1,13 +1,16 @@
-import 'package:corelab_app_challenge/modules/home/presentation/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../core/domain/enums/page_state_enum.dart';
 import '../../../../core/ui/components/app_bottom_navigation_bar.dart';
+import '../../../../core/ui/components/app_divider.dart';
 import '../../../../core/ui/components/height.dart';
 import '../../../../core/ui/theme/app_colors.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
+import '../../../shared/presentation/components/item_widget.dart';
+import '../../../shared/presentation/components/products_shimmer_skeleton_widget.dart';
 import '../components/custom_app_bar.dart';
-import '../components/item_widget.dart';
+import '../controllers/home_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgrounColor,
       appBar: const CustomAppBar(),
       bottomNavigationBar: const AppBottomNavigation(currentPage: AvailablePages.home),
       body: SafeArea(
@@ -37,11 +41,11 @@ class _HomePageState extends State<HomePage> {
                   style: AppTextStyles().larger,
                 ),
               ),
-              const Height(20),
+              const Height(10),
               ValueListenableBuilder(
                 valueListenable: controller.pageState,
                 builder: (context, state, child) {
-                  return state == HomePageState.success
+                  return state == PageState.success
                       ? ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
@@ -54,23 +58,31 @@ class _HomePageState extends State<HomePage> {
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  const Height(10),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 12),
                                     child: Text(
-                                      item.dataAnuncio!,
+                                      item.dataAnuncio,
                                       style: AppTextStyles(color: AppColors.neutralGrey).small,
                                     ),
                                   ),
                                   const Height(10),
-                                  ItemWidget(productEntity: item),
+                                  const AppDivider(),
+                                  ProductWidget(productEntity: item),
+                                  const AppDivider()
                                 ],
                               );
                             } else {
-                              return ItemWidget(productEntity: item);
+                              return Column(
+                                children: [
+                                  ProductWidget(productEntity: item),
+                                  const AppDivider(),
+                                ],
+                              );
                             }
                           },
                         )
-                      : const CircularProgressIndicator();
+                      : const ProductsShimmerSkeletonWidget();
                 },
               )
             ],

@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:localization/localization.dart';
 
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/ui/components/app_snack_bar.dart';
@@ -36,47 +33,49 @@ class _AppBottomNavigationState extends State<AppBottomNavigation> {
     Modular.to.navigate(AppRoutes.home);
   }
 
-  onUnavaiableFeatureTap() => showSnackBar(context: context, message: "unavailableFunctionality".i18n());
+  onUnavaiableFeatureTap() => showSnackBar(context: context, message: "Indisponível no momento");
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: Platform.isIOS ? 20 : 0),
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 80),
-        child: Row(
-          children: [
-            _buttonNavigation(
-              icon: AppIcons.home,
-              label: 'home'.i18n(),
-              isSelected: widget.currentPage == AvailablePages.home,
-              onTap: onHomeTap,
-            ),
-            _buttonNavigation(
-              icon: AppIcons.categories,
-              label: 'categories'.i18n(),
-              isSelected: widget.currentPage == AvailablePages.categories,
-              onTap: onCategoriesTap,
-            ),
-            _buttonNavigation(
-              icon: AppIcons.announce,
-              label: 'announce'.i18n(),
-              isSelected: widget.currentPage == AvailablePages.announce,
-              onTap: onUnavaiableFeatureTap,
-            ),
-            _buttonNavigation(
-              icon: AppIcons.favorite,
-              label: 'favorites'.i18n(),
-              isSelected: widget.currentPage == AvailablePages.favorites,
-              onTap: onUnavaiableFeatureTap,
-            ),
-            _buttonNavigation(
-              icon: AppIcons.user,
-              label: 'account'.i18n(),
-              isSelected: widget.currentPage == AvailablePages.account,
-              onTap: onUnavaiableFeatureTap,
-            ),
-          ],
+    return SafeArea(
+      child: Container(
+        color: AppColors.white,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxHeight: 80),
+          child: Row(
+            children: [
+              _buttonNavigation(
+                icon: AppIcons.home,
+                label: "Home",
+                isSelected: widget.currentPage == AvailablePages.home,
+                onTap: onHomeTap,
+              ),
+              _buttonNavigation(
+                icon: AppIcons.categories,
+                label: "Categorias",
+                isSelected: widget.currentPage == AvailablePages.categories,
+                onTap: onCategoriesTap,
+              ),
+              _buttonNavigation(
+                icon: AppIcons.announce,
+                label: "Anunciar",
+                isSelected: widget.currentPage == AvailablePages.announce,
+                onTap: onUnavaiableFeatureTap,
+              ),
+              _buttonNavigation(
+                icon: AppIcons.favorite,
+                label: "Favoritos",
+                isSelected: widget.currentPage == AvailablePages.favorites,
+                onTap: onUnavaiableFeatureTap,
+              ),
+              _buttonNavigation(
+                icon: AppIcons.user,
+                label: "Conta",
+                isSelected: widget.currentPage == AvailablePages.account,
+                onTap: onUnavaiableFeatureTap,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -107,8 +106,8 @@ class _AppBottomNavigationState extends State<AppBottomNavigation> {
                 Text(
                   label,
                   style: TextStyle(
-                    fontSize: 12,
                     fontWeight: FontWeight.w400,
+                    fontSize: 12,
                     color: isSelected ? AppColors.defaultCyan : Colors.grey,
                   ),
                 ),

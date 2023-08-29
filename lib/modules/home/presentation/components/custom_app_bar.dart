@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/ui/theme/app_colors.dart';
 import '../../../../core/ui/theme/app_text_styles.dart';
-import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   const CustomAppBar({Key? key}) : super(key: key);
@@ -23,7 +26,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
           child: Padding(
             padding: const EdgeInsets.all(8),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Modular.to.pushNamed(AppRoutes.search);
+              },
               child: Container(
                 decoration: const BoxDecoration(
                   color: AppColors.white,
