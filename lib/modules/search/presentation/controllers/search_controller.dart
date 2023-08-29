@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/debouncer.dart';
 import '../../../../core/domain/enums/page_state_enum.dart';
+import '../../../../core/utils/debouncer.dart';
 import '../../../shared/domain/entities/product_entity.dart';
 import '../../domain/enum/search_type_enum.dart';
 import '../../domain/usecases/fetch_history_usecase.dart';
@@ -60,11 +60,13 @@ class SearchControlller {
   }
 
   Future<void> search(String search, {SearchType? searchType}) async {
-    if (search == '') return;
-    
     _searchDebouncer.cancel();
 
     _searchDebouncer.run(() async {
+      if (searchTextEditingController.text == '' || search == '') {
+        return;
+      }
+
       searchTextEditingController.text = search;
 
       pageState.value = PageState.loading;
