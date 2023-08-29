@@ -65,8 +65,7 @@ class SearchControlller {
         },
         (response) {
           pageState.value = PageState.success;
-          searchResults.clear();
-          searchResults.addAll(response);
+          searchResults = response;
         },
       );
     });
