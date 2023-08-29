@@ -63,7 +63,7 @@ class SearchControlller {
     _searchDebouncer.cancel();
 
     _searchDebouncer.run(() async {
-      if (searchTextEditingController.text == '' || search == '') {
+      if (searchType != SearchType.byCategory && (searchTextEditingController.text == '' || search == '')) {
         return;
       }
 
